@@ -10,10 +10,8 @@ CREATE TABLE IF NOT EXISTS public."Precipitation"
     latitude real,
     longitude real,
     condition_text text COLLATE pg_catalog."default",
-    precip_mm real
-	CONSTRAINT Precipitation" PRIMARY KEY (
-		"country"
-	)
+    precip_mm real,
+	CONSTRAINT "Precipitation" PRIMARY KEY ("country")
 );
 
 CREATE TABLE IF NOT EXISTS public.cloud_cover
@@ -21,7 +19,7 @@ CREATE TABLE IF NOT EXISTS public.cloud_cover
     cloud integer,
     visibility_km numeric,
     visibility_miles numeric,
-    air_quality numeric
+    air_quality numeric,
 	CONSTRAINT "cloud_cover" PRIMARY KEY (
 		"cloud"
 	)
@@ -30,7 +28,7 @@ CREATE TABLE IF NOT EXISTS public.cloud_cover
 CREATE TABLE IF NOT EXISTS public.moon_vs_air_quality
 (
     air_quality numeric,
-    moon_illumination integer
+    moon_illumination integer,
 	CONSTRAINT "moon_vs_air_quality" PRIMARY KEY (
 		"air_quality"
 	)
@@ -41,7 +39,7 @@ CREATE TABLE IF NOT EXISTS public.temperature_fahrenheit
 	country text COLLATE pg_catalog."default",
     latitude real,
     longitude real,
-    temperature_fahrenheit real
+    temperature_fahrenheit real,
 	CONSTRAINT "temperature_fahrenheit" PRIMARY KEY (
 		"temperature_fahrenheit"
 	)
@@ -57,3 +55,6 @@ ALTER TABLE "cloud_cover" ADD CONSTRAINT "cloud_cover_air_quality" FOREIGN KEY("
 REFERENCES "moon_vs_air_quality" ("air_quality");
 
 END;
+
+SELECT *
+FROM cloud_cover
