@@ -1,0 +1,35 @@
+from flask import Flask, jsonify
+import sqlite3
+
+app = Flask(__name__)
+
+#establish connection to weather.db database
+def get_db_connection():
+    conn = sqlite3.connect("weather.db")
+    conn.row_factory = sqlite3.Row
+    return conn
+
+#route for all weather data
+@app.route('/weather_data', methods=['GET'])
+def get_weather_data():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM weather_data")
+    data = cursor.fetchall()
+    conn.close()
+    return jsonify([dict(row) for row in data])
+
+#route to get weather data for a specific location by ID
+@app.route('/weather_data/<int:location_id>', methods=['GET'])
+def get_location_weather_data(location_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM weather_data WHERE rowid = ?", (location_id,))
+    data = cursor.fetchone()
+    conn.close()
+    if data is None:
+        return "location not found", 404
+    return jsonify(dict(data))
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)
