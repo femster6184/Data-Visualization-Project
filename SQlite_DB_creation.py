@@ -35,8 +35,7 @@ cursor.execute('''
 ''')
 
 #read csv and import weatherdata into table
-#MAKE SURE TO CHANGE PATH for github repo, currently using personal path prior to update - WONT work otherwise!!
-with open('Oliver_work\data\GlobalWeatherRepository_full_data.csv', 'r') as csv_file:
+with open('CSVs/GlobalWeatherRepository_full_data.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     next(csv_reader)
     for row in csv_reader:
