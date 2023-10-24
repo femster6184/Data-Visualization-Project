@@ -27,12 +27,13 @@
                 <div class='control-wrapper'>
                     <div class="padding-top">
                         <h5>Select a country</h5>
-                        <input type="text" id='country'/>
-                        <select id="selCountry" onchange="optionChanged(this.value)"><option>Select a country to continue</option></select>
+                        <input type="text" id='selCountry' list='countryList' onchange="optionChanged(this.value)"/>
+                        <!--<select id="selCountry" onchange="optionChanged(this.value)"><option>Select a country to continue</option></select>-->
+						<datalist id="countryList"></datalist>
                     </div>
                     <div class="padding-top">
                         <h5>Select a city</h5>
-                        <input type="text" id='city' /> 
+                        <!--<input type="text" id='city' /> -->
                         <select id="selCity" onchange="optionChanged(this.value)" disabled><option>Select a country to continue</option></select>
                     </div>
                    
@@ -66,11 +67,16 @@
           
           <div class="row">
           <h3 class="col-md-12 text-center"> Gauges</h3>
-            <div class="col-md-3">
+            <div class="col-md-5">
                 <div id="gauge1"></div>
-                <div id="gauge2"></div>
-                <div id="gauge3"></div>
             </div>
+                <div class="col-md-5">
+                  <div id="gauge2"></div>
+                </div>
+                
+          
+              
+            
           </div>
         </div>
         
