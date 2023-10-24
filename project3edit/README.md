@@ -9,10 +9,11 @@ The purpose of this project is to provide insights and data visualizations of di
 We plan to use the project track - dashboard page with multiple charts that update from the same data.
 
 We are working with this weather dataset from Kaggle: https://www.kaggle.com/datasets/nelgiriyewithana/global-weather-repository
+
 We will investigate the following questions:
 1. (Darrick) How does air quality differ by location?
 2. (Susan) How do latitude and longitude affect temperature and wind speed?
-3. (Oliver) Do latitude and longitude affect precipitation frequency and magnitude?
+3. (Oliver) How do latitude and longitude affect precipitation frequency and magnitude?
 4. (Carlos) Does cloud cover have an affect on air quality?
 5. (Femi) Does air quality affect levels of moon illumination?
 
@@ -20,3 +21,13 @@ By answering these questions, we hope to improve our understanding of how these 
 
 ### Startup & Use
 
+Run app.py in order to start the flask server
+
+Navigate the site using the buttons, dropdowns, and interactive visualizations
+
+## Contributors:
+Oliver K
+Carlos V
+Femi A
+Darrick M
+Susan O
