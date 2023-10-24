@@ -63,7 +63,7 @@ let selCity = document.querySelector('#selCity');
 				<p>Cloud Coverage: ${cloud[v]}</p>
 				<p>Precipitation: ${precip[v]}mm</p>
 				<p>Moon Illumination: ${moon[v]}</p>
-				<p>Visibility (KM): ${visKM[v]}</p>
+				<p>Visibility (Km): ${visKM[v]}</p>
 				<p>Visibility (Miles): ${visM[v]}</p>`);
 				buildGaugeChart(air[v]);
 				buildGaugeChart2(moon[v]);
