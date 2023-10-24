@@ -1,13 +1,20 @@
-from flask import Flask, jsonify
+from flask import Flask, render_template, request, jsonify
 import sqlite3
 
 app = Flask(__name__)
 
-#establish connection to weather.db database
+#connect to database (weather.db)
 def get_db_connection():
     conn = sqlite3.connect("weather.db")
     conn.row_factory = sqlite3.Row
     return conn
+
+#route to render HTML template w/ search form
+@app.route('/')
+def index():
+    template_file = '/Users/oliverkisza/Desktop/Bootcampfiles/Project 3 - Group 6/Data-Visualization-Project-1/index2.html'
+    #REMEMBER TO CHANGE FILEPATH OTHERWISE WILL NOT WORK
+    return render_template(template_file)
 
 #route for all weather data
 @app.route('/weather_data', methods=['GET'])
@@ -30,6 +37,24 @@ def get_location_weather_data(location_id):
     if data is None:
         return "location not found", 404
     return jsonify(dict(data))
+
+#route for search and visualization
+@app.route('/location_visualization', methods=['POST'])
+def location_visualization():
+    selected_location = request.form.get('location')
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM weather_data WHERE location_name = ?", (selected_location,))
+    data = cursor.fetchall()
+    conn.close()
+
+    if data:
+        #visualization logic here 
+        #return visualization/ data
+        #can use libraries like matplotlib/ plotly 
+        return render_template('visualization.html', data=data)
+    else:
+        return "Location not found", 404
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
