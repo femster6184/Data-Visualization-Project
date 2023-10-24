@@ -9,10 +9,8 @@ function init() {
         // Set a variable for the sample names
         let questions = [];
         questions.push("Select Visualization");
-        questions.push("How does air quality differ by location?");
         questions.push("How do latitude affect temperature and wind speed?");
-        questions.push("Do latitude and longitude affect precipitation frequency and magnitude?");
-        questions.push("Does air quality affect levels of moon illumination?");
+        questions.push("Cloud cover by city");
         console.log(questions)
         questions.forEach(x => {dropdownMenu.append("option").text(x)
         });
@@ -46,9 +44,9 @@ console.log(data.latitude)
         if (event.target.options.selectedIndex == 0) {
             document.querySelector("#scatter").innerHTML=""
         } else if (event.target.options.selectedIndex == 1) {
-            createMap();
-        } else if (event.target.options.selectedIndex == 2) {
             buildScatterplot()
-        } 
+        } else if (event.target.options.selectedIndex == 2) {
+            drawBarPlot()
+        }
         
     }
