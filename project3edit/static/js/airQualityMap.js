@@ -1,4 +1,3 @@
-function createMap() {
 // Creating the map object
 let myMap = L.map("map", {
     center: [0, 0],
@@ -117,4 +116,3 @@ legend.onAdd = function () {
     
     legend.addTo(myMap);
 ;
-}

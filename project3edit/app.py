@@ -46,6 +46,11 @@ def index():
     template_file = 'index.html'
     return render_template(template_file)
 
+@app.route('/map')
+def index2():
+    template_file = 'map.html'
+    return render_template(template_file)
+
 @app.route("/?")
 def welcome():
     """List all available API routes."""
