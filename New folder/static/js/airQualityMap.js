@@ -77,7 +77,11 @@ d3.csv('CSVs/GlobalWeatherRepository-Darrick.csv').then(function(data) {
 
     var nData = removeDupes(wData, mData)
     console.log(nData)
+    createMarkers(nData)
+    
+});
 
+function createMarkers(nData){
     for( var i = 0; i<nData[1].length; i++) {
 
         L.circleMarker([nData[2][i], nData[3][i]], {
@@ -88,7 +92,8 @@ d3.csv('CSVs/GlobalWeatherRepository-Darrick.csv').then(function(data) {
         .bindPopup(`<h3>Country: ${nData[0][i]}, Location: ${nData[1][i]}, Air Quality PM2.5: ${nData[4][i]}</h3>`)
         .addTo(myMap);
     }
-});
+
+}
 
     
 // create the legend
