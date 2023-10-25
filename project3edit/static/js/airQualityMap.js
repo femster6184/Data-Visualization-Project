@@ -63,25 +63,7 @@ function removeDupes(data, mData) {
     return mData;
 }
 
-//imort Data
-d3.json('static/js/Weather_Repository.json').then(function(data) {
-    var wData = [[],[],[],[],[]]
-    for (var i = 0; i < Object.keys(data.air_quality).length; i++) {
-        wData[0].push(data.country[i])
-        wData[1].push(data.location_name[i])
-        wData[2].push(Number(data.air_quality[i]))
-        wData[3].push(Number(data.latitude[i]))
-        wData[4].push(Number(data.longitude[i]))
-    }
-    
-    var mData = getAvg(wData)
-    var nData = removeDupes(wData, mData)
-    console.log(nData)
-
-    createMarkers(nData)
-    
-});
-
+//create markers
 function createMarkers(nData){
     for( var i = 0; i<nData[1].length; i++) {
 
@@ -90,12 +72,30 @@ function createMarkers(nData){
         color: getColor(nData[4][i]),
         fillOpacity: 1
         })
-        .bindPopup(`<h3>Country: ${nData[0][i]}, Location: ${nData[1][i]}, Air Quality PM2.5: ${nData[4][i]}</h3>`)
+        .bindPopup(`<h3>Country: ${nData[0][i]}, Location: ${nData[1][i]}, Air Quality PM10: ${nData[4][i]}</h3>`)
         .addTo(myMap);
     }
 
 }
 
+//imort Data
+d3.json('static/js/weather_data.json').then(function(data) {
+    var wData = [[],[],[],[],[]]
+
+    for (var i = 0; i < Object.keys(data).length; i++) {
+        wData[0].push(data[i]["Country"])
+        wData[1].push(data[i]["Location Name"])
+        wData[2].push(Number(data[i]["Air Quality PM10"]))
+        wData[3].push(Number(data[i]["Latitude"]))
+        wData[4].push(Number(data[i]["Longitude"]))
+    }
+    
+    var mData = getAvg(wData)
+    var nData = removeDupes(wData, mData)
+
+    createMarkers(nData)
+    
+});
     
 // create the legend
 var legend = L.control({ position: "bottomright" });
