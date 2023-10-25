@@ -22,6 +22,11 @@ By answering these questions, we hope to improve our understanding of how these 
 ### Startup & Use
 
 Run app.py in order to start the flask server
+Open http://127.0.0.1:8080/ in browser
+Available Routes:
+/extract
+/extract/subset
+/map
 
 Navigate the site using the buttons, dropdowns, and interactive visualizations
 
