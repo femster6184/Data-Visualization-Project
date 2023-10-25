@@ -9,7 +9,7 @@ from flask import Flask, render_template
 import json
 from flask import Flask, jsonify
 #################################################
-# import csv 
+# import csv #Note: if csv is not found, set 'project3edit/GlobalWeatherRepository_full_data.csv' as path
 df = pd.read_csv('GlobalWeatherRepository_full_data.csv')
 
 #################################################
